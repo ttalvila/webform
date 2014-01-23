@@ -1,4 +1,37 @@
 webform
+=======
 
+Instructions for compiling and running the application:
+- Copy the codes from https://github.com/ttalvila/webform
+- Open console window and browse to webform-folder.
+- Then run the command: 
+	mvn install 	
+- When the install has finished, run Tomcat 7 server by calling:
+	mvn tomcat7:run
+- Or both can be called on same line: 
+	mvn install tomcat7:run
+- When Tomcat has started, open browser and go to address localhost:8080/webform 
+- Now you should see the user interface in the browser window.
 
-initial commit
+Technical docs:
+===============
+
+The solution is based on the following technologies, which were suggested in the given exercise:
+- Vaadin 7.1.10
+- Spring Framework 4.0.0
+- Postgresql database 9.3
+
+As I didn't have any previous experience with Vaadin or Postgresql, my time in making the solution has greatly went in trying to make the different technologies to work together. This has not yet worked right, so the application is not finished yet. But you can see the basic concepts of my solution, and maybe comment if they are going to the right direction. 
+
+The work flow should go from Vaadin Gui, where user fills in the fields. Then, when user presses the Submit-button system checks that the given inputs are valid. If the input is not valid, then the user is notified of the false input. When input is valid, then it is send via JPA-beans to the database, where it is stored. User sees message of successful operation. 
+
+So the work flow goes like:
+	Vaadin <===> Spring JPA <===> Postgresql 
+
+As I was unable get the Postgresql-database to run on Windows, the solution doesn't yet store anything to database. As well the JPA-classes are missing at this point, but the basic concepts should be as mentioned. At this point the application consists only of the visible user interface, which yet does nothing. 
+
+TODO:
+=====
+- Get the Postgresql db service working on Windows 7
+- Make JPA to map database and inject the data to Vaadin
+- Add validation to check that invalid data is not saved
